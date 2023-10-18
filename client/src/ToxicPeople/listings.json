@@ -1,0 +1,22 @@
+[
+    {
+      "name": "Yeon Lee",
+      "bio": "Hello",
+      "grade": "Junior"
+    },
+    {
+      "name": "Katherine Wang",
+      "bio": "Hello",
+      "grade": "Freshmen"
+    },
+    {
+      "name": "Roshan Bellary",
+      "bio": "Hello",
+      "grade": "Senior"
+    },
+    {
+      "name": "Kevin Zao",
+      "bio": "Hello",
+      "grade": "Sophomore"
+    }
+]

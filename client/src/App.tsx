@@ -20,6 +20,8 @@ import RegisterPage from './Authentication/RegisterPage';
 import LoginPage from './Authentication/LoginPage';
 import EmailResetPasswordPage from './Authentication/EmailResetPasswordPage';
 import ResetPasswordPage from './Authentication/ResetPasswordPage';
+import ToxicPeoplePage from './ToxicPeople/toxicpeople';
+import ToxicTraitsPage from './ToxicPeople/toxictraits';
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
                       path="/reset-password/:token"
                       element={<ResetPasswordPage />}
                     />
+                    <Route path="/toxicpeople" element={<ToxicPeoplePage />} />
+                    <Route path="/toxictraits" element={<ToxicTraitsPage />} />
                   </Route>
                   {/* Routes accessed only if user is authenticated */}
                   <Route element={<ProtectedRoutesWrapper />}>

@@ -1,4 +1,30 @@
+// prettier-ignore
+
+import { IToxicPerson, ToxicPerson } from '../models/toxicperson.model';
+
+const addToxicPerson = async (toxicperson: IToxicPerson) => {
+  const newToxicPerson = new ToxicPerson(toxicperson);
+  const result = await newToxicPerson.save();
+  return result;
+};
+
+const getUserByName = async (name: string) => {
+  const user = await ToxicPerson.findOne({ name }).exec();
+  return user;
+};
+
 /*
- * TODO: Fill this out with the service layer for your toxic person! Hint: tale a look at user.service.ts and see how that service
- * uses the User model to save and update to the database.
- */
+.select(removeSensitiveDataQuery)
+*/
+
+const getAll = async () => {
+  const toxicPeople = await ToxicPerson.find();
+  return toxicPeople;
+};
+
+const deleteUserById = async (id: string) => {
+  const user = await ToxicPerson.findByIdAndDelete(id).exec();
+  return user;
+};
+
+export { addToxicPerson, getAll, deleteUserById, getUserByName };
