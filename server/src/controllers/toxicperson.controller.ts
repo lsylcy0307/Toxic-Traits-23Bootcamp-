@@ -1,11 +1,9 @@
 // prettier-ignore
 import express from 'express';
-import { IToxicPerson } from '../models/toxicperson.model';
 import {
   addToxicPerson,
   getAll,
   deleteUserById,
-  getUserByName,
 } from '../services/toxicperson.service';
 import StatusCode from '../util/statusCode';
 import ApiError from '../util/apiError';
@@ -46,25 +44,17 @@ const deleteToxicPerson = async (
   res: express.Response,
   next: express.NextFunction,
 ) => {
-  const { firstName } = req.params;
-  if (!firstName) {
-    next(ApiError.missingFields(['firstName']));
+  const { id } = req.params;
+  if (!id) {
+    next(ApiError.missingFields(['id']));
     return;
   }
-
-  // Check if user to delete is an admin
-  const user: IToxicPerson | null = await getUserByName(firstName);
-  if (!user) {
-    next(ApiError.notFound(`User with name ${firstName} does not exist`));
-    return;
+  try {
+    await deleteUserById(id);
+    res.sendStatus(StatusCode.OK);
+  } catch (e) {
+    next(ApiError.internal('Failed to delete user.'));
   }
-
-  deleteUserById(user._id)
-    .then(() => res.sendStatus(StatusCode.OK))
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    .catch((e) => {
-      next(ApiError.internal('Failed to delete user.'));
-    });
 };
 
 export { getAllPeople, addToxicPersonController, deleteToxicPerson };

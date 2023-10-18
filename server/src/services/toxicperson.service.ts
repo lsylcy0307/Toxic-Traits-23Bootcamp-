@@ -23,7 +23,7 @@ const getAll = async () => {
 };
 
 const deleteUserById = async (id: string) => {
-  const user = await ToxicPerson.findByIdAndDelete(id).exec();
+  const user = await ToxicPerson.findByIdAndDelete(id);
   return user;
 };
 

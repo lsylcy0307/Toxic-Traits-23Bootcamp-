@@ -12,4 +12,6 @@ router.post('/', addToxicPersonController);
 
 router.get('/all', getAllPeople);
 
-router.delete('/:firstName', deleteToxicPerson);
+router.delete('/:id', deleteToxicPerson);
+
+export default router;
