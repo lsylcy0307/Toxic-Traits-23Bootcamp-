@@ -1,5 +1,6 @@
 // prettier-ignore
 import express from 'express';
+import { IToxicPerson } from '../models/toxicperson.model';
 import {
   addToxicPerson,
   getAll,
@@ -44,9 +45,10 @@ const addToxicPersonController = async (
   res: express.Response,
   next: express.NextFunction,
 ) => {
-  const { body } = req;
+  const { firstName, lastName, toxicTraits } = req.body;
+  const toxicPerson: IToxicPerson = { firstName, lastName, toxicTraits };
   try {
-    await addToxicPerson(body);
+    await addToxicPerson(toxicPerson);
     res.sendStatus(StatusCode.CREATED);
   } catch (err) {
     next(ApiError.internal('failed to add a toxic person'));

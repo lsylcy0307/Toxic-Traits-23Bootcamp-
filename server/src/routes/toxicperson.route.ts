@@ -9,7 +9,7 @@ import {
 
 const router = express.Router();
 
-router.post('/', addToxicPersonController);
+router.post('/register', addToxicPersonController);
 
 router.get('/:id', getUserController);
 router.get('/', getAllPeople);
