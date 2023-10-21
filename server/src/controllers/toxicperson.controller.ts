@@ -4,9 +4,24 @@ import {
   addToxicPerson,
   getAll,
   deleteUserById,
+  getUserById,
 } from '../services/toxicperson.service';
 import StatusCode from '../util/statusCode';
 import ApiError from '../util/apiError';
+
+const getUserController = async (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction,
+) => {
+  const { id } = req.params;
+  if (!id) {
+    next(ApiError.missingFields(['id']));
+  }
+  const user = await getUserById(id);
+  res.json(user);
+  return user;
+};
 
 const getAllPeople = async (
   req: express.Request,
@@ -57,4 +72,9 @@ const deleteToxicPerson = async (
   }
 };
 
-export { getAllPeople, addToxicPersonController, deleteToxicPerson };
+export {
+  getUserController,
+  getAllPeople,
+  addToxicPersonController,
+  deleteToxicPerson,
+};

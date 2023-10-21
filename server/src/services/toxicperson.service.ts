@@ -8,8 +8,8 @@ const addToxicPerson = async (toxicperson: IToxicPerson) => {
   return result;
 };
 
-const getUserByName = async (name: string) => {
-  const user = await ToxicPerson.findOne({ name }).exec();
+const getUserById = async (id: string) => {
+  const user = await ToxicPerson.findById(id);
   return user;
 };
 
@@ -27,4 +27,4 @@ const deleteUserById = async (id: string) => {
   return user;
 };
 
-export { addToxicPerson, getAll, deleteUserById, getUserByName };
+export { addToxicPerson, getAll, deleteUserById, getUserById };
