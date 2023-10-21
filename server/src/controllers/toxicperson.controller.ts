@@ -20,7 +20,6 @@ const getUserController = async (
   }
   const user = await getUserById(id);
   res.json(user);
-  return user;
 };
 
 const getAllPeople = async (
