@@ -11,28 +11,28 @@ import FormRow from '../components/form/FormRow';
 import FormGrid from '../components/form/FormGrid';
 
 function RegisterToxicPage() {
-    const navigate = useNavigate();
-  
-    // Default values for state
-    const defaultValues = {
-      firstName: '',
-      lastName: '',
-    //   pictureUrl: '',
-      toxicTraits: '',
-    };
+  const navigate = useNavigate();
 
-    type ValueType = keyof typeof values;
-  
-    // State values and hooks
-    const [values, setValueState] = useState(defaultValues);
-  
-    // Helper functions for changing only one field in a state object
-    const setValue = (field: string, value: string) => {
-        setValueState((prevState) => ({
-        ...prevState,
-        ...{ [field]: value },
-        }));
-    };
+  // Default values for state
+  const defaultValues = {
+    firstName: '',
+    lastName: '',
+    //   pictureUrl: '',
+    toxicTraits: '',
+  };
+
+  type ValueType = keyof typeof values;
+
+  // State values and hooks
+  const [values, setValueState] = useState(defaultValues);
+
+  // Helper functions for changing only one field in a state object
+  const setValue = (field: string, value: string) => {
+    setValueState((prevState) => ({
+      ...prevState,
+      ...{ [field]: value },
+    }));
+  };
 
   async function handleSubmit() {
     const traits = values.toxicTraits.split(',');
@@ -45,10 +45,10 @@ function RegisterToxicPage() {
       throw Error(res.error.message);
     }
     return res.data;
-    //navigate('/');
+    // navigate('/');
   }
 
-  const title = "Add a Toxic Person";
+  const title = 'Add a Toxic Person';
   return (
     <ScreenGrid>
       <FormGrid>

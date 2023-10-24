@@ -51,7 +51,10 @@ function App() {
                     />
                     <Route path="/toxicpeople" element={<ToxicPeoplePage />} />
                     <Route path="/toxictraits" element={<ToxicTraitsPage />} />
-                    <Route path="/registertoxic" element={<RegisterToxicPage />} />
+                    <Route
+                      path="/registertoxic"
+                      element={<RegisterToxicPage />}
+                    />
                   </Route>
                   {/* Routes accessed only if user is authenticated */}
                   <Route element={<ProtectedRoutesWrapper />}>

@@ -1,6 +1,5 @@
 // prettier-ignore
 import express from 'express';
-import { IToxicPerson } from '../models/toxicperson.model';
 import {
   addToxicPerson,
   getAll,
