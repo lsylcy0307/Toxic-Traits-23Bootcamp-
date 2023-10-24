@@ -46,9 +46,9 @@ const addToxicPersonController = async (
   next: express.NextFunction,
 ) => {
   const { firstName, lastName, toxicTraits } = req.body;
-  const toxicPerson: IToxicPerson = { firstName, lastName, toxicTraits };
+ // const toxicPerson: IToxicPerson = { firstName, lastName, toxicTraits };
   try {
-    await addToxicPerson(toxicPerson);
+    await addToxicPerson(firstName, lastName, toxicTraits);
     res.sendStatus(StatusCode.CREATED);
   } catch (err) {
     next(ApiError.internal('failed to add a toxic person'));

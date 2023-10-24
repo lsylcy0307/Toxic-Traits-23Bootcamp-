@@ -1,9 +1,17 @@
 // prettier-ignore
 
-import { IToxicPerson, ToxicPerson } from '../models/toxicperson.model';
+import { ToxicPerson } from '../models/toxicperson.model';
 
-const addToxicPerson = async (toxicperson: IToxicPerson) => {
-  const newToxicPerson = new ToxicPerson(toxicperson);
+const addToxicPerson = async (
+  firstName: string,
+  lastName: string,
+  toxicTraits: [string],
+) => {
+  const newToxicPerson = new ToxicPerson({
+    firstName,
+    lastName,
+    toxicTraits,
+  });
   const result = await newToxicPerson.save();
   return result;
 };
