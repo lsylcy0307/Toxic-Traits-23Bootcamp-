@@ -17,7 +17,7 @@ function RegisterToxicPage() {
   const defaultValues = {
     firstName: '',
     lastName: '',
-    //   pictureUrl: '',
+    pictureUrl: '',
     toxicTraits: '',
   };
 
@@ -36,12 +36,14 @@ function RegisterToxicPage() {
 
   async function handleSubmit() {
     const traits = values.toxicTraits.split(',');
-    const res = await postData('toxic/register', {
+    const res = await postData('/toxic/register', {
       firstName: values.firstName,
       lastName: values.lastName,
       toxicTraits: traits,
+      pictureUrl: values.pictureUrl,
     });
     if (res.error) {
+      console.log(res.error.message);
       throw Error(res.error.message);
     }
     return res.data;
@@ -92,6 +94,17 @@ function RegisterToxicPage() {
                 onChange={(e) => setValue('toxicTraits', e.target.value)}
               />
             </Grid>
+            <Grid item width=".5">
+              <TextField
+                fullWidth
+                size="small"
+                type="text"
+                required
+                label="Picture Url"
+                value={values.pictureUrl}
+                onChange={(e) => setValue('pictureUrl', e.target.value)}
+              />
+            </Grid>
           </FormRow>
           <Grid item container justifyContent="center">
             <PrimaryButton
@@ -106,7 +119,7 @@ function RegisterToxicPage() {
           </Grid>
           <FormRow>
             <Grid container justifyContent="center">
-              <Link component={RouterLink} to="../">
+              <Link component={RouterLink} to="/toxicpeople">
                 Back to Main
               </Link>
             </Grid>

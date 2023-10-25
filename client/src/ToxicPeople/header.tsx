@@ -1,6 +1,7 @@
 // prettier-ignore
 import { Typography, Button } from '@mui/material';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -43,7 +44,7 @@ function Header() {
         }}
       >
         <div className="add button">
-          <Button variant="contained" onClick={() => console.log('Add Person')}>
+          <Button variant="contained" component={Link} to="/registertoxic">
             Add
           </Button>
         </div>

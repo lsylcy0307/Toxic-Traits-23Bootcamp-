@@ -6,11 +6,13 @@ const addToxicPerson = async (
   firstName: string,
   lastName: string,
   toxicTraits: [string],
+  pictureUrl: string,
 ) => {
   const newToxicPerson = new ToxicPerson({
     firstName,
     lastName,
     toxicTraits,
+    pictureUrl,
   });
   const result = await newToxicPerson.save();
   return result;
