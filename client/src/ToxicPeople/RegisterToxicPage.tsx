@@ -46,8 +46,8 @@ function RegisterToxicPage() {
       console.log(res.error.message);
       throw Error(res.error.message);
     }
-    return res.data;
-    // navigate('/');
+
+    navigate('/toxicpeople');
   }
 
   const title = 'Add a Toxic Person';
