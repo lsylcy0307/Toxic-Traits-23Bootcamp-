@@ -1,6 +1,5 @@
 // prettier-ignore
 import { Typography, Button } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -33,7 +32,12 @@ function Header() {
             fontWeight: 'bold',
           }}
         >
-          Toxic People
+          <Link
+            to="/toxicpeople"
+            style={{ textDecoration: 'none', color: 'black' }}
+          >
+            Toxic People
+          </Link>
         </Typography>
       </div>
       <div
@@ -45,11 +49,7 @@ function Header() {
         }}
       >
         <div className="add button">
-          <Button
-            component={RouterLink}
-            to="/registertoxic"
-            variant="contained"
-          >
+          <Button component={Link} to="/registertoxic" variant="contained">
             Add
           </Button>
         </div>

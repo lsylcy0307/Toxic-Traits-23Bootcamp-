@@ -1,13 +1,31 @@
+/* eslint-disable no-underscore-dangle */
 // prettier-ignore
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './toxicpeople.css';
 import { Box, Button, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Header from './header';
 import ListingCard from './listingcards';
 import listings from './listings.json';
+import { getData } from '../util/api';
+
+export interface Person {
+  _id: string;
+  pictureUrl: string;
+  firstName: string;
+  lastName: string;
+  toxicTraits: string[];
+}
 
 function ToxicPeoplePage() {
+  const [people, setPeople] = useState<Person[]>([]);
+  useEffect(() => {
+    const getPeople = async () => {
+      const ppl = (await getData('toxic')).data as Person[];
+      setPeople(ppl);
+    };
+    getPeople();
+  }, []);
   return (
     <div className="r">
       <Header />
@@ -28,11 +46,14 @@ function ToxicPeoplePage() {
             gap: 2,
           }}
         >
-          {listings.map((listing, index) => (
+          {people.map((person, index) => (
             <ListingCard
-              name={listing.name}
-              bio={listing.bio}
-              grade={listing.grade}
+              key={person._id}
+              firstName={person.firstName}
+              lastName={person.lastName}
+              toxicTraits={person.toxicTraits}
+              picture={person.pictureUrl}
+              personId={person._id}
             />
           ))}
         </Box>

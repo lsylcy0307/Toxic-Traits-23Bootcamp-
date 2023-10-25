@@ -8,17 +8,23 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, Box, CardActions, Button } from '@mui/material';
 
 type ListingCardProps = {
-  person_id: string;
+  personId: string;
   picture: string;
   firstName: string;
   lastName: string;
   toxicTraits: string[];
 };
-function ListingCard({ person_id, picture, firstName, lastName, toxicTraits}: ListingCardProps) {
-  var person_url = "/toxictraits/?id=" + person_id;
+function ListingCard({
+  personId,
+  picture,
+  firstName,
+  lastName,
+  toxicTraits,
+}: ListingCardProps) {
+  const personUrl = `/toxictraits/?id=${personId}`;
   return (
     <Card sx={{ flexDirection: 'column' }}>
-      <CardActionArea component={Link} to={person_url}>
+      <CardActionArea component={Link} to={personUrl}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {firstName} {lastName}
@@ -27,7 +33,7 @@ function ListingCard({ person_id, picture, firstName, lastName, toxicTraits}: Li
         <CardMedia
           component="img"
           height="140"
-          image= {picture}
+          image={picture}
           alt="profile pic"
         />
         <CardContent>
@@ -40,11 +46,6 @@ function ListingCard({ person_id, picture, firstName, lastName, toxicTraits}: Li
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Delete
-        </Button>
-      </CardActions>
     </Card>
   );
 }

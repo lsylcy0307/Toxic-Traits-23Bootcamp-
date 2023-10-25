@@ -36,7 +36,7 @@ function RegisterToxicPage() {
 
   async function handleSubmit() {
     const traits = values.toxicTraits.split(',');
-    const res = await postData('/toxic/register', {
+    const res = await postData('toxic/register', {
       firstName: values.firstName,
       lastName: values.lastName,
       toxicTraits: traits,
