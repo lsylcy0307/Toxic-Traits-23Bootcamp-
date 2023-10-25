@@ -18,6 +18,7 @@ function ToxicTraitsPage() {
   useEffect(() => {
     const getPerson = async () => {
       const pers: Person = (await getData(`toxic/${personId}`)).data;
+      console.log(pers);
       setPersonData(pers);
     };
     getPerson();
@@ -25,17 +26,34 @@ function ToxicTraitsPage() {
 
   let page = <Typography>Loading</Typography>;
   if (personData) {
+    console.log(personData);
     page = (
-      <>
-        <h1>{`${personData.firstName} ${personData.lastName}`}</h1>
-        <img src={personData.pictureUrl} alt="profile" />
-        <Typography>Toxic Traits</Typography>
-        <ul>
-          {personData.toxicTraits.map((trait) => {
-            return <li key={trait}>trait</li>;
-          })}
-        </ul>
-      </>
+      <Box sx={{ padding: '80px 80px' }}>
+        <div
+          className="personalinfoWrapper"
+          style={{ display: 'flex', justifyContent: 'space-around' }}
+        >
+          <h1>Toxic Person! </h1>
+          <ListingCard
+            personId={personId ?? ''}
+            picture={personData.pictureUrl}
+            firstName={personData.firstName}
+            lastName={personData.lastName}
+            toxicTraits={personData.toxicTraits}
+          />
+        </div>
+      </Box>
+      // <div className='personalinfoWrapper'
+      // style={{display: 'flex', justifyContent: 'space-around'}}>
+      //   <h1>{`${personData.firstName} ${personData.lastName}`}</h1>
+      //   <img src={personData.pictureUrl} alt="profile" />
+      //   <Typography>Toxic Traits</Typography>
+      //   <ul>
+      //     {personData.toxicTraits.map((trait) => {
+      //       return <li key={trait}>trait</li>;
+      //     })}
+      //   </ul>
+      // </div>
     );
   }
   return (

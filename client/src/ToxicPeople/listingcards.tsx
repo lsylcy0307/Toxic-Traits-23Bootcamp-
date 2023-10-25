@@ -25,11 +25,6 @@ function ListingCard({
   return (
     <Card sx={{ flexDirection: 'column' }}>
       <CardActionArea component={Link} to={personUrl}>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {firstName} {lastName}
-          </Typography>
-        </CardContent>
         <CardMedia
           component="img"
           height="140"
@@ -37,6 +32,9 @@ function ListingCard({
           alt="profile pic"
         />
         <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {firstName} {lastName}
+          </Typography>
           <Typography>
             <ol>
               {toxicTraits.map((trait) => (
