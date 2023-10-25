@@ -1,6 +1,8 @@
 // prettier-ignore
 import { Typography, Button } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -43,7 +45,11 @@ function Header() {
         }}
       >
         <div className="add button">
-          <Button variant="contained" onClick={() => console.log('Add Person')}>
+          <Button
+            component={RouterLink}
+            to="/registertoxic"
+            variant="contained"
+          >
             Add
           </Button>
         </div>

@@ -4,14 +4,14 @@ interface IToxicPerson extends mongoose.Document {
   _id: string;
   firstName: string;
   lastName: string;
-  // pictureUrl: string;
+  pictureUrl: string;
   toxicTraits: [string];
 }
 
 const ToxicPersonSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  // pictureUrl: { type: String, required: true },
+  pictureUrl: { type: String, required: true },
   toxicTraits: { type: Array, required: true },
 });
 
